@@ -1,5 +1,5 @@
 # Spring-2020-ITCS-8190-Cloud Computing for Data Analysis
-This repository will contains the projects and assignments of course ITCS 6190/8190: Cloud Computing for Data Analysis. This course has been taken in Spring 2020 semester, as part of my PhD degree at UNC Charlotte.
+This repository contains the projects and assignments of course **"ITCS 6190/8190: Cloud Computing for Data Analysis"**. This course has been taken in Spring 2020 semester, as part of my PhD degree at UNC Charlotte.
 
 Textbooks:
 1. Mining of Massive Datasets, 2nd Edition, by Jure Leskovec, Anand Rajaraman, and Jeff Ullman, Cambridge University Press, 2014, ISBN: 9781107077232
