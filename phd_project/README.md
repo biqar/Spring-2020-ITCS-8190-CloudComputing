@@ -1,6 +1,16 @@
-# Cloud Computing for Data Analysis (PhD Project Description)
+# PhD Project Description
 
-Part 1   
+Due to the inadequate number of PhD students in the class, we submitted the "Part 0" only as an individual work.
+
+Part 0 
+-----------
+* PhD Project Presentation Topic: Vector space classification
+* Read from book 4: Introduction to Information Retrieval ([Chapter 14](https://webpages.uncc.edu/aatzache/ITCS6190/Textbooks/IR/IR_14_Vector_Space_Classification_Chapter14.pdf))
+* Submitted:
+  1. [Presentation slides](https://github.com/biqar/Spring-2020-ITCS-8190-CloudComputing/blob/master/phd_project/ITCS%206190_8190%20(phd%20project).pptx)
+  2. [Recorded slideshow of the presentation](https://drive.google.com/file/d/1itrN7QvkKRgPYGZ-klaxglFhqDk_9YIl/view?usp=sharing)
+
+Part 1
 -----------
 
 MapReduce program - worth 20 points ( out of 100 )
@@ -95,7 +105,7 @@ PRESENTATION - worth 20 points (out of 100)
 - all source code ( Part 3 ) , PowerPoint slides file , and YouTube video link  are due on Canvas  3  days before the presentation date .
 
 
-Part 5 
+Part 5
 -------
 
 Research Paper Report	-	worth 20 points ( out of 100 )
@@ -129,4 +139,3 @@ http://webpages.uncc.edu/aatzache/ITCS6190/Project/IEEE_Format_Instructions8.5x1
 https://owl.english.purdue.edu/owl/resource/560/06/
 ```
 - Upload your Paper as a Word document in IEEE format to Canvas .
-
