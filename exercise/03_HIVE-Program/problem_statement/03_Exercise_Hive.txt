@@ -1,0 +1,56 @@
+Cloud Computing for Data Analysis
+
+Exercise - 03: Hive
+
+1. Download Car data from : http://webpages.uncc.edu/aatzache/ITCS6162/Project/Data/CarEvaluationData/CarData.zip 
+
+2. Unzip CarData.zip and copy the data.txt and attributes.txt to your web server using WinSCP or CyberDuck
+
+3. Create a new directory CarData in HDFS using the command:
+hadoop fs -mkdir /user/YourUserName/CarData
+
+4. Copy the above files to CarData directory in HDFS also by using following commands:
+
+hadoop fs -put CarData.txt /user/YourUserName/CarData/
+hadoop fs -put CarDataAttributes.txt /user/YourUserName/CarData/
+
+
+4. In the cluster, to enter Hive, type hive and click Enter
+
+$ hive
+
+hive>
+
+
+5. Create a table called CarData in Hive by using the attribute names from  CarDataAttributes.txt.
+
+CREATE TABLE UNCCUserNameCarData(Buying STRING,Maint STRING,Doors STRING,Persons STRING,LugBoot STRING,Safety STRING,Class String)
+COMMENT 'This is the Cars table'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE
+LOCATION '/user/YourUserName/CarData';
+
+To create Hive table see the tutorial below : https://cwiki.apache.org/confluence/display/Hive/Tutorial
+
+(NOTE: The Hive tables that we create are centralized. If we create a table named CarData, it will be created for the entire class. So create unique Hive tables like UNCCUserNameCarData)
+
+(NOTE: The directory(CarData) that we created in HDFS may get deleted after creating table. So if we run into any problem while running this command or if we want 
+to create table again, we have to check if the file 'CarData.txt' is still available in HDFS. If it got deleted, we have to do the steps 3 and 4 again)
+
+6. load data inpath '/users/YourUserName/CarData.txt' into table UNCCUserNameCarData;
+
+7. Run SQL queries on table CarData :
+
+INSERT OVERWRITE DIRECTORY '/user/cloudera/CarDataOutput' 
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
+SELECT * FROM Aislam6CarData 
+WHERE Aislam6CarData.Buying = 'vhigh' 
+AND Aislam6CarData.Doors LIKE '%more' 
+AND Aislam6CarData.Class = 'unacc';
+
+This command will store the query output in the directory 'CarDataOutput'. We can access files inside this directory from CyberDuck or WinSCP.
+The output file would be named something like 000000_0. We can rename it to any name like 'CarDataOutput.txt'
+
+8. Save all commands in your Terminal Window in a Text File , and upload the   c   to Canvas .
+

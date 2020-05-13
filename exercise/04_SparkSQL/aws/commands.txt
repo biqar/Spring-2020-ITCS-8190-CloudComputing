@@ -1,0 +1,159 @@
+CCI1KQFVH6ALT:Downloads aislam6$ ssh -i ClassKeyPair.pem hadoop@ec2-13-58-59-151.us-east-2.compute.amazonaws.com
+The authenticity of host 'ec2-13-58-59-151.us-east-2.compute.amazonaws.com (13.58.59.151)' can't be established.
+ECDSA key fingerprint is SHA256:m1eUr9ZXLl4iEGaPPJxWbF2QXLcGebT2+qqAl7xtsFc.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'ec2-13-58-59-151.us-east-2.compute.amazonaws.com,13.58.59.151' (ECDSA) to the list of known hosts.
+Last login: Wed Feb 12 00:00:30 2020
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/
+6 package(s) needed for security, out of 15 available
+Run "sudo yum update" to apply all updates.
+                                                                    
+EEEEEEEEEEEEEEEEEEEE MMMMMMMM           MMMMMMMM RRRRRRRRRRRRRRR    
+E::::::::::::::::::E M:::::::M         M:::::::M R::::::::::::::R   
+EE:::::EEEEEEEEE:::E M::::::::M       M::::::::M R:::::RRRRRR:::::R 
+  E::::E       EEEEE M:::::::::M     M:::::::::M RR::::R      R::::R
+  E::::E             M::::::M:::M   M:::M::::::M   R:::R      R::::R
+  E:::::EEEEEEEEEE   M:::::M M:::M M:::M M:::::M   R:::RRRRRR:::::R 
+  E::::::::::::::E   M:::::M  M:::M:::M  M:::::M   R:::::::::::RR   
+  E:::::EEEEEEEEEE   M:::::M   M:::::M   M:::::M   R:::RRRRRR::::R  
+  E::::E             M:::::M    M:::M    M:::::M   R:::R      R::::R
+  E::::E       EEEEE M:::::M     MMM     M:::::M   R:::R      R::::R
+EE:::::EEEEEEEE::::E M:::::M             M:::::M   R:::R      R::::R
+E::::::::::::::::::E M:::::M             M:::::M RR::::R      R::::R
+EEEEEEEEEEEEEEEEEEEE MMMMMMM             MMMMMMM RRRRRRR      RRRRRR
+                                                                    
+[hadoop@ip-172-31-17-128 ~]$ aws s3 cp s3://aislam6sparksql/SparkSQLScala.jar
+usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+To see help text, you can run:
+
+  aws help
+  aws <command> help
+  aws <command> <subcommand> help
+aws: error: too few arguments
+[hadoop@ip-172-31-17-128 ~]$ aws s3 cp s3://aislam6sparksql/SparkSQLScala.jar
+usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+To see help text, you can run:
+
+  aws help
+  aws <command> help
+  aws <command> <subcommand> help
+aws: error: too few arguments
+[hadoop@ip-172-31-17-128 ~]$ aws s3 cp s3://aislam6sparksql/SparkSQLScala.jar .
+download: s3://aislam6sparksql/SparkSQLScala.jar to ./SparkSQLScala.jar
+[hadoop@ip-172-31-17-128 ~]$ spark-submit --class org.SparkSQL.Driver ./SparkSQLScala.jar s3://aislam6sparksql/data.txt s3://aislam6sparksql/SparkSQLOutput
+20/02/12 00:09:02 WARN SparkSubmit$$anon$2: Failed to load org.SparkSQL.Driver.
+java.lang.ClassNotFoundException: org.SparkSQL.Driver
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:348)
+	at org.apache.spark.util.Utils$.classForName(Utils.scala:238)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:814)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:161)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:184)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:928)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:937)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+20/02/12 00:09:02 INFO ShutdownHookManager: Shutdown hook called
+20/02/12 00:09:02 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-f454a65d-fa79-4d2f-9b90-0d85bf71cde0
+[hadoop@ip-172-31-17-128 ~]$ aws s3 cp s3://aislam6sparksql/SparkSQLScala.jar .
+download: s3://aislam6sparksql/SparkSQLScala.jar to ./SparkSQLScala.jar
+[hadoop@ip-172-31-17-128 ~]$ spark-submit --class org.SparkSQL.Driver ./SparkSQLScala.jar s3://aislam6sparksql/data.txt s3://aislam6sparksql/SparkSQLOutput
+20/02/12 00:12:04 INFO SparkContext: Running Spark version 2.4.4
+20/02/12 00:12:05 INFO SparkContext: Submitted application: SparkAction
+20/02/12 00:12:05 INFO SecurityManager: Changing view acls to: hadoop
+20/02/12 00:12:05 INFO SecurityManager: Changing modify acls to: hadoop
+20/02/12 00:12:05 INFO SecurityManager: Changing view acls groups to: 
+20/02/12 00:12:05 INFO SecurityManager: Changing modify acls groups to: 
+20/02/12 00:12:05 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+20/02/12 00:12:05 INFO Utils: Successfully started service 'sparkDriver' on port 44085.
+20/02/12 00:12:05 INFO SparkEnv: Registering MapOutputTracker
+20/02/12 00:12:05 INFO SparkEnv: Registering BlockManagerMaster
+20/02/12 00:12:05 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+20/02/12 00:12:05 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+20/02/12 00:12:05 INFO DiskBlockManager: Created local directory at /mnt/tmp/blockmgr-6a808770-6e8d-4362-b9ed-3cb538734dac
+20/02/12 00:12:05 INFO MemoryStore: MemoryStore started with capacity 1038.8 MB
+20/02/12 00:12:05 INFO SparkEnv: Registering OutputCommitCoordinator
+20/02/12 00:12:06 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+20/02/12 00:12:06 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://ip-172-31-17-128.us-east-2.compute.internal:4040
+20/02/12 00:12:06 INFO SparkContext: Added JAR file:/home/hadoop/./SparkSQLScala.jar at spark://ip-172-31-17-128.us-east-2.compute.internal:44085/jars/SparkSQLScala.jar with timestamp 1581466326324
+20/02/12 00:12:06 INFO Executor: Starting executor ID driver on host localhost
+20/02/12 00:12:06 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 37533.
+20/02/12 00:12:06 INFO NettyBlockTransferService: Server created on ip-172-31-17-128.us-east-2.compute.internal:37533
+20/02/12 00:12:06 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+20/02/12 00:12:06 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, ip-172-31-17-128.us-east-2.compute.internal, 37533, None)
+20/02/12 00:12:06 INFO BlockManagerMasterEndpoint: Registering block manager ip-172-31-17-128.us-east-2.compute.internal:37533 with 1038.8 MB RAM, BlockManagerId(driver, ip-172-31-17-128.us-east-2.compute.internal, 37533, None)
+20/02/12 00:12:06 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, ip-172-31-17-128.us-east-2.compute.internal, 37533, None)
+20/02/12 00:12:06 INFO BlockManager: external shuffle service port = 7337
+20/02/12 00:12:06 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, ip-172-31-17-128.us-east-2.compute.internal, 37533, None)
+20/02/12 00:12:08 INFO EventLoggingListener: Logging events to hdfs:/var/log/spark/apps/local-1581466326427
+20/02/12 00:12:09 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 238.0 KB, free 1038.6 MB)
+20/02/12 00:12:09 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 24.1 KB, free 1038.6 MB)
+20/02/12 00:12:09 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on ip-172-31-17-128.us-east-2.compute.internal:37533 (size: 24.1 KB, free: 1038.8 MB)
+20/02/12 00:12:09 INFO SparkContext: Created broadcast 0 from textFile at Driver.scala:19
+20/02/12 00:12:12 INFO SharedState: loading hive config file: file:/etc/spark/conf.dist/hive-site.xml
+20/02/12 00:12:12 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('hdfs:///user/spark/warehouse').
+20/02/12 00:12:12 INFO SharedState: Warehouse path is 'hdfs:///user/spark/warehouse'.
+20/02/12 00:12:13 INFO StateStoreCoordinatorRef: Registered StateStoreCoordinator endpoint
+20/02/12 00:12:15 INFO CodeGenerator: Code generated in 437.010678 ms
+20/02/12 00:12:17 INFO ClientConfigurationFactory: Set initial getObject socket timeout to 2000 ms.
+20/02/12 00:12:18 INFO deprecation: mapred.output.dir is deprecated. Instead, use mapreduce.output.fileoutputformat.outputdir
+20/02/12 00:12:18 INFO HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.DirectFileOutputCommitter
+20/02/12 00:12:18 INFO DirectFileOutputCommitter: Nothing to setup since the outputs are written directly.
+20/02/12 00:12:19 INFO GPLNativeCodeLoader: Loaded native gpl library
+20/02/12 00:12:19 INFO LzoCodec: Successfully loaded & initialized native-lzo library [hadoop-lzo rev a3b61461af0d6b4d981c915b0a1f342464987aaa]
+20/02/12 00:12:19 INFO FileInputFormat: Total input files to process : 1
+20/02/12 00:12:19 INFO SparkContext: Starting job: runJob at SparkHadoopWriter.scala:78
+20/02/12 00:12:19 INFO DAGScheduler: Got job 0 (runJob at SparkHadoopWriter.scala:78) with 1 output partitions
+20/02/12 00:12:19 INFO DAGScheduler: Final stage: ResultStage 0 (runJob at SparkHadoopWriter.scala:78)
+20/02/12 00:12:19 INFO DAGScheduler: Parents of final stage: List()
+20/02/12 00:12:19 INFO DAGScheduler: Missing parents: List()
+20/02/12 00:12:19 INFO DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[8] at saveAsTextFile at Driver.scala:31), which has no missing parents
+20/02/12 00:12:19 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 95.6 KB, free 1038.5 MB)
+20/02/12 00:12:19 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 34.6 KB, free 1038.4 MB)
+20/02/12 00:12:19 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on ip-172-31-17-128.us-east-2.compute.internal:37533 (size: 34.6 KB, free: 1038.8 MB)
+20/02/12 00:12:19 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1201
+20/02/12 00:12:19 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[8] at saveAsTextFile at Driver.scala:31) (first 15 tasks are for partitions Vector(0))
+20/02/12 00:12:19 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks
+20/02/12 00:12:19 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0, localhost, executor driver, partition 0, ANY, 7889 bytes)
+20/02/12 00:12:19 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)
+20/02/12 00:12:20 INFO Executor: Fetching spark://ip-172-31-17-128.us-east-2.compute.internal:44085/jars/SparkSQLScala.jar with timestamp 1581466326324
+20/02/12 00:12:20 INFO TransportClientFactory: Successfully created connection to ip-172-31-17-128.us-east-2.compute.internal/172.31.17.128:44085 after 58 ms (0 ms spent in bootstraps)
+20/02/12 00:12:20 INFO Utils: Fetching spark://ip-172-31-17-128.us-east-2.compute.internal:44085/jars/SparkSQLScala.jar to /mnt/tmp/spark-47e44f4d-0fa0-4376-8b65-4c18c3c03d49/userFiles-9245ddbd-19b2-40e3-9a54-96941f74a2f4/fetchFileTemp9084439808674818918.tmp
+20/02/12 00:12:20 INFO Executor: Adding file:/mnt/tmp/spark-47e44f4d-0fa0-4376-8b65-4c18c3c03d49/userFiles-9245ddbd-19b2-40e3-9a54-96941f74a2f4/SparkSQLScala.jar to class loader
+20/02/12 00:12:20 INFO HadoopRDD: Input split: s3://aislam6sparksql/data.txt:0+53593
+20/02/12 00:12:20 INFO S3NativeFileSystem: Opening 's3://aislam6sparksql/data.txt' for reading
+20/02/12 00:12:20 INFO CodeGenerator: Code generated in 45.034268 ms
+20/02/12 00:12:20 INFO HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.DirectFileOutputCommitter
+20/02/12 00:12:20 INFO MultipartUploadOutputStream: close closed:false s3://aislam6sparksql/SparkSQLOutput/part-00000
+20/02/12 00:12:20 INFO SparkHadoopMapRedUtil: No need to commit output of task because needsTaskCommit=false: attempt_20200212001217_0008_m_000000_0
+20/02/12 00:12:20 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 1619 bytes result sent to driver
+20/02/12 00:12:21 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 1093 ms on localhost (executor driver) (1/1)
+20/02/12 00:12:21 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+20/02/12 00:12:21 INFO DAGScheduler: ResultStage 0 (runJob at SparkHadoopWriter.scala:78) finished in 1.432 s
+20/02/12 00:12:21 INFO DAGScheduler: Job 0 finished: runJob at SparkHadoopWriter.scala:78, took 1.703459 s
+20/02/12 00:12:21 INFO FileOutputCommitter: File Output Committer Algorithm version is 2
+20/02/12 00:12:21 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: true
+20/02/12 00:12:21 INFO DirectFileOutputCommitter: Direct Write: ENABLED
+20/02/12 00:12:21 INFO DirectFileOutputCommitter: Nothing to clean up since no temporary files were written.
+20/02/12 00:12:21 INFO MultipartUploadOutputStream: close closed:false s3://aislam6sparksql/SparkSQLOutput/_SUCCESS
+20/02/12 00:12:21 INFO SparkHadoopWriter: Job job_20200212001217_0008 committed.
+20/02/12 00:12:21 INFO SparkContext: Invoking stop() from shutdown hook
+20/02/12 00:12:21 INFO SparkUI: Stopped Spark web UI at http://ip-172-31-17-128.us-east-2.compute.internal:4040
+20/02/12 00:12:21 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+20/02/12 00:12:21 INFO MemoryStore: MemoryStore cleared
+20/02/12 00:12:21 INFO BlockManager: BlockManager stopped
+20/02/12 00:12:21 INFO BlockManagerMaster: BlockManagerMaster stopped
+20/02/12 00:12:21 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+20/02/12 00:12:21 INFO SparkContext: Successfully stopped SparkContext
+20/02/12 00:12:21 INFO ShutdownHookManager: Shutdown hook called
+20/02/12 00:12:21 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-47e44f4d-0fa0-4376-8b65-4c18c3c03d49
+20/02/12 00:12:21 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-50d26b2a-28e9-4d34-854f-8f9930f019b3
+[hadoop@ip-172-31-17-128 ~]$ 

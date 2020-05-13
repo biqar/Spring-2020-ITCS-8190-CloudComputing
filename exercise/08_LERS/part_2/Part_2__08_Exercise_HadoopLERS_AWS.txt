@@ -1,0 +1,29 @@
+LERS algorithm in Hadoop MapReduce
+Download source code here: http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/HadoopLERS_Example.zip
+
+To run the Code:
+
+1. Create a cluster with Hadoop and Spark in AWS and start the cluster. Once the cluster is running, log-in to the master node using Putty(Windows) or SSH(MAC or Linux). Refer to:
+ 
+GroupActivity_01 Instructions for logging in to the AWS EMR cluster Simple Commands Task2
+http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/GroupActivity01_LoggingInto_AWS_Cluster_SimpleCommands_Task2.doc
+
+video: AWS-EMR_Cluster_Setup
+https://youtu.be/_A_xEtd2OIM
+
+
+
+2. Create a data bucket in AWS S3. Upload data.txt, attributes.txt, parameters.txt from the Data directory and SparkLERS.jar files to S3
+
+3. From the master node download HadoopLERS.jar using the command:
+	aws s3 cp s3://raqiblers/hadoop_lers/HadoopLERS.jar .
+
+4. Run the .jar file using your terminal or Putty using following command:
+
+hadoop jar HadoopLERS.jar snippet.Main s3://raqiblers/hadoop_lers/attributes.txt s3://raqiblers/hadoop_lers/data.txt s3://raqiblers/hadoop_lers/parameters.txt s3://raqiblers/hadoop_lers/HadoopLERSOutput
+
+5. Download the output folder (HadoopLERSOutput) from S3 to your local machine and upload to Canvas
+
+6. Save all commands in your Terminal Window in a Text File , including your login and username until the last command, with all commands, results and errors if any from the terminal window and upload the   TeminalWindow.txt   to Canvas .
+
+7. Delete/Terminate the AWS cluster and delete all files from S3 when finished, otherwise Amazon will charge your Credit Card

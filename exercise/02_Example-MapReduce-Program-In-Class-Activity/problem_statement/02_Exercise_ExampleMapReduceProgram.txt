@@ -1,0 +1,64 @@
+﻿Cloud Computing for Data Analysis
+
+Exercise_02 : ExampleMapReduceProgram 
+
+MapReduce WordCount Program 	
+---------
+
+1. Install required Software :
+
+- Putty ( for Windows ) , use Terminal ( for Apple Macintosh )
+- WinSCP ( for Windows ) , CyberDuck ( for Apple Macintosh )
+- Oracle Virtual Box
+- Cloudera – by default it contains Eclipse and Hadoop packages installed which can be used to program MapReduce programs. (We can find many tutorials for installing Cloudera)
+
+More instructions for seting up single node cluster(Cloudera): http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/GroupActivity01_SingleNodeClusterSetup.docx
+More instructions for logging into DSBA cluster: http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/GroupActivity01_LoggingInto_UNCC_cluster.docx
+
+2. Read from textbook :   "Hadoop the Definitive Guide"
+
+http://www.amazon.com/Hadoop-Definitive-Guide-Tom-White/dp/1491901632
+
+- Chapter 1 Meet Hadoop , 
+- Chapter 2 MapReduce , 
+- Chapter 3 The Hadoop Distributed File System , 
+- Chapter 6 Developing a MapReduce Application , 
+- Chapter 7 How MapReduce Works , 
+- Chapter 8 MapReduce Types and Formats , 
+- Chapter 9 MapReduce Features 
+
+
+3. Read the    ‘ MapReduce Tutorial ‘  from
+https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html
+
+Part 1
+--------
+4. Copy the ‘ WordCount v1.0 ‘  program     https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html#Example:_WordCount_v1.0       and run it on the local Hadoop Cluster . To install single node cluster on the laptop , install the Oracle Virtual Box , and Cloudera . Use the Eclipse , which comes with Cloudera .
+
+	(NOTE: For the input file of the WordCount program use Mammals book from: http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/03_MammalsBook_Text_34848.txt.utf8.txt)
+
+	4.1. Go to File -> New -> Java Project. Give project name and click 'Next'
+ 	4.2. Go to 'Libraries' tab and click on 'Add External Jars' button
+	4.3. Select all '.jar' files from File System -> usr -> lib -> hadoop -> client and click OK button.
+	4.4. Similarly do for all '.jar files' from cloudera -> lib and click OK button.
+	4.5. Now we have all required packages installed in the project to run a MapReduce job. Click 'Finish' button to create a whole project.
+	4.6. Go inside the new project and right click on 'src' and select New -> Class. Give the class name as 'WordCount' and leave 'Package Name' empty for now.
+	(NOTE: Do not check public static void main() checkbox, because a main function already exists in the program that we are going to copy)
+	4.7. Now copy WordCount v1.0 into new project from https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html#Example:_WordCount_v1.0.
+	4.8. Convert the project into a jar file. To do it, right click on the project, select Export -> Java -> JAR file and click Next button. Give the export destination (My suggestion is to keep the .jar file in cloudera folder - Since this is the home directory, we can run directly from it without any directory changes). The .jar file will be 'untitled', we can change it to some other name. Click 'Finish' button
+	4.9. Check if the .jar file is available in a desired folder and open the Terminal
+	4.10. Get Mammals book from the above mentioned link and save it as 'mammals.txt' in 'cloudera' folder. Move the 'mammals.txt' file into HDFS with the command: hadoop fs -put mammals.txt /user/cloudera/
+	4.11. Execute the program with the command: hadoop jar JAR_FILE_NAME.jar WordCount /user/cloudera/mammals.txt /user/cloudera/WordCountV1Output/
+	(NOTE:
+		1. In the above command, WordCount is a main class name
+		2. For running the same command second time, we have to delete the old output folder or give another name for the new output folder. Hadoop cannot replace the old output folder
+		3. To remove a folder from HDFS, use the command: hadoop fs -rm -r /user/cloudera/FOLDER_NAME
+	)
+	4.12. Once the execution is complete, check if the output files are created using: hadoop fs -ls /user/cloudera/WordCountV1Output
+	4.13. To open a file in the output folder, use : hadoop fs -cat /user/cloudera/WordCountV1Output/part-r-00000
+	4.14. To copy this file from HDFS to local, use: hadoop fs -get /user/cloudera/WordCountV1Output/part-r-00000 WordCountV1.txt
+	4.15. Using the above command, transfer the project's .jar file and output file
+        4.16. Copy all commands from the Command Line Window or Terminal into a .txt file from beginning until the last command.
+	4.16. Get these files from CyberDuck or WinSCP and upload all of them to Canvas 
+
+Each student should upload this part individually

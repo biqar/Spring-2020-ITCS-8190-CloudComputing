@@ -1,0 +1,63 @@
+Cloud Computing for Data Analysis
+-------------------------------------------------
+EXTRA CREDIT EXERCISE - Exercise 11: Support Vector Machine - Instructions
+
+_1. Create a Maven project in Eclipse for Spark
+
+_1.1 Open Elipse IDE for Scala
+_1.2 File -> New -> Project
+_1.3 Select Maven -> Maven Project -> Click Next
+_1.4 Enable the following checkbox - Create a simple project
+_1.5 Enter Group Id: and Artifact Id: for example: svm6190
+_1.6 Click finish
+
+_2. Right click on the project folder -> Configure -> Add Scala Nature
+
+_3. Right click on src/main/java -> refactor -> rename -> scala
+
+_4. Add the following dependencies in pom.xml
+
+<dependencies>
+  <dependency>
+    	<groupId>org.apache.spark</groupId>
+    	<artifactId>spark-core_2.11</artifactId>
+    	<version>2.2.0</version>
+  </dependency>
+  <dependency>
+  	<groupId>org.apache.spark</groupId>
+  	<artifactId>spark-mllib_2.11</artifactId>
+  	<version>2.2.0</version>
+   </dependency>
+</dependencies>
+
+_5. Right click on the project folder -> Build Path -> Configure Build Path -> Scala Compiler -> Enable the checkbox (USe Project Settings). 
+    Select Scala Installation -> Latest 2.11 bundle (dynamic). Then click Apply -> ok -> ok
+
+_6. Copy the file svmdriver.scala and SVMMultiClass into the src/main/scala folder in the project.
+    Code available in https://webpages.uncc.edu/aatzache/ITCS6190/Project/SVM.zip
+
+_7. Right click on the project folder -> Run As -> maven clean
+
+_8. Right click on the project folder -> Run As -> maven install
+
+_9. The jar file would be generated in the target folder in the Project.
+
+_10. Get the .jar file.
+
+_11. Create a cluster with Hadoop and Spark in AWS and start the cluster. 
+     Once the cluster is running, log-in to the master node using Putty(Windows) or SSH(MAC or Linux)
+
+_12. Create a data bucket in AWS S3. Upload the Car Data .jar files to S3
+
+_13. From the master node download .jar using the command:
+	aws s3 cp s3://BUCKET_NAME/JAR_NAME.jar .
+
+_14. Run the .jar file using your terminal or Putty using following command:	
+	spark-submit --class svmdriver --master yarn --deploy-mode client <LOCATION_OF_JAR_FILE> s3://BUCKET_NAME/data.txt
+
+_15. Copy the Ouput - Confusion Matrix, Accuracy and Precision, Recall, F-measure metrics from the Terminal to a text file. Name the text file as Output.txt
+     Save the terminal command window text.
+
+SUBMIT the Output.txt, and the terminal command window text file on Canvas.
+
+* Delete/Terminate the AWS cluster and delete all files from S3 when finished, otherwise Amazon will charge your Credit Card

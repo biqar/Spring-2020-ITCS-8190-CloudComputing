@@ -1,0 +1,16 @@
+Cloud Computing for Data Analysis
+
+Exercise: 08 LERS Software - Extract classification rules
+
+Download the project file from: http://webpages.uncc.edu/aatzache/ITCS6162/Exercises/LERS_Code.zip
+
+1. The .zip file is a Java project. We can import it directly in Eclipse
+2. The .zip file comes attribute.txt and data.txt files 
+3. We can change file path of attribute.txt in line - 131
+4. We can change file path of data.txt in line - 146
+5. Run the java code
+6. The code gives all available attributes and asks for a Decision attribute:
+7. Enter any attribute name from the displayed attributes and press Enter
+8. The code now generates certain and possible rules with corresponding support and confidence
+9. The code also produces the output file named 'Output.txt'
+10. Submit the 'Output.txt' file in Canvas

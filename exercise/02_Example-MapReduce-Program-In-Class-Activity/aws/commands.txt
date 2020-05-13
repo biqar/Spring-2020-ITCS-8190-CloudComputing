@@ -1,0 +1,308 @@
+CCI1KQFVH6ALT:Downloads aislam6$ ssh -i ClassKeyPair.pem hadoop@ec2-18-191-219-203.us-east-2.compute.amazonaws.com
+The authenticity of host 'ec2-18-191-219-203.us-east-2.compute.amazonaws.com (18.191.219.203)' can't be established.
+ECDSA key fingerprint is SHA256:hV4EWFcZ+UBpMMUn3zoP5HzwubM1b5RtT1M3KhcWV2M.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'ec2-18-191-219-203.us-east-2.compute.amazonaws.com,18.191.219.203' (ECDSA) to the list of known hosts.
+Last login: Tue Jan 28 20:24:12 2020
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/
+3 package(s) needed for security, out of 15 available
+Run "sudo yum update" to apply all updates.
+                                                                    
+EEEEEEEEEEEEEEEEEEEE MMMMMMMM           MMMMMMMM RRRRRRRRRRRRRRR    
+E::::::::::::::::::E M:::::::M         M:::::::M R::::::::::::::R   
+EE:::::EEEEEEEEE:::E M::::::::M       M::::::::M R:::::RRRRRR:::::R 
+  E::::E       EEEEE M:::::::::M     M:::::::::M RR::::R      R::::R
+  E::::E             M::::::M:::M   M:::M::::::M   R:::R      R::::R
+  E:::::EEEEEEEEEE   M:::::M M:::M M:::M M:::::M   R:::RRRRRR:::::R 
+  E::::::::::::::E   M:::::M  M:::M:::M  M:::::M   R:::::::::::RR   
+  E:::::EEEEEEEEEE   M:::::M   M:::::M   M:::::M   R:::RRRRRR::::R  
+  E::::E             M:::::M    M:::M    M:::::M   R:::R      R::::R
+  E::::E       EEEEE M:::::M     MMM     M:::::M   R:::R      R::::R
+EE:::::EEEEEEEE::::E M:::::M             M:::::M   R:::R      R::::R
+E::::::::::::::::::E M:::::M             M:::::M RR::::R      R::::R
+EEEEEEEEEEEEEEEEEEEE MMMMMMM             MMMMMMM RRRRRRR      RRRRRR
+                                                                    
+[hadoop@ip-172-31-26-253 ~]$ aws s3 cp s3://wordcountexe/wc_1/MRWordCount.jar /home/hadoop
+download: s3://wordcountexe/wc_1/MRWordCount.jar to ./MRWordCount.jar
+[hadoop@ip-172-31-26-253 ~]$ hadoop fs -put /home/hadoop/MRWordCount.jar /user/hadoop
+[hadoop@ip-172-31-26-253 ~]$ hadoop fs -ls /user/hadoop/
+Found 1 items
+-rw-r--r--   1 hadoop hadoop   32689715 2020-01-28 20:39 /user/hadoop/MRWordCount.jar
+[hadoop@ip-172-31-26-253 ~]$ hadoop jar MRWordCount.jar WordCount s3://wordcountexe/data/mammals.txt s3://wordcountexe/out_01
+Exception in thread "main" java.lang.ClassNotFoundException: WordCount
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:348)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:232)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:153)
+[hadoop@ip-172-31-26-253 ~]$ hadoop jar MRWordCount.jar wordcount s3://wordcountexe/data/mammals.txt s3://wordcountexe/out_01
+Exception in thread "main" java.lang.ClassNotFoundException: wordcount
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:348)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:232)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:153)
+[hadoop@ip-172-31-26-253 ~]$ aws s3 cp s3://wordcountexe/wc_1/MRWordCount.jar /home/hadoop
+download: s3://wordcountexe/wc_1/MRWordCount.jar to ./MRWordCount.jar
+[hadoop@ip-172-31-26-253 ~]$ hadoop fs -put /home/hadoop/MRWordCount.jar /user/hadoop
+put: `/user/hadoop/MRWordCount.jar': File exists
+[hadoop@ip-172-31-26-253 ~]$ hadoop fs -rm -r /user/hadoop/MRWordCount.jar
+Deleted /user/hadoop/MRWordCount.jar
+[hadoop@ip-172-31-26-253 ~]$ hadoop fs -put /home/hadoop/MRWordCount.jar /user/hadoop
+[hadoop@ip-172-31-26-253 ~]$ hadoop fs -ls /user/hadoop/
+Found 1 items
+-rw-r--r--   1 hadoop hadoop   32689710 2020-01-28 20:56 /user/hadoop/MRWordCount.jar
+[hadoop@ip-172-31-26-253 ~]$ hadoop jar MRWordCount.jar WordCount s3://wordcountexe/data/mammals.txt s3://wordcountexe/out_01
+Exception in thread "main" java.lang.ClassNotFoundException: WordCount
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:348)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:232)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:153)
+[hadoop@ip-172-31-26-253 ~]$ hadoop jar MRWordCount.jar org.wc.WordCount s3://wordcountexe/data/mammals.txt s3://wordcountexe/out_01
+Exception in thread "main" java.lang.UnsupportedClassVersionError: org/wc/WordCount has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:756)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:348)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:232)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:153)
+[hadoop@ip-172-31-26-253 ~]$ hadoop fs -rm -r /user/hadoop/MRWordCount.jar
+Deleted /user/hadoop/MRWordCount.jar
+[hadoop@ip-172-31-26-253 ~]$ aws s3 cp s3://wordcountexe/wc_1/MRWordCount.jar /home/hadoop
+download: s3://wordcountexe/wc_1/MRWordCount.jar to ./MRWordCount.jar
+[hadoop@ip-172-31-26-253 ~]$ hadoop fs -put /home/hadoop/MRWordCount.jar /user/hadoop
+[hadoop@ip-172-31-26-253 ~]$ hadoop fs -ls /user/hadoop/
+Found 1 items
+-rw-r--r--   1 hadoop hadoop   32689391 2020-01-28 21:08 /user/hadoop/MRWordCount.jar
+[hadoop@ip-172-31-26-253 ~]$ hadoop jar MRWordCount.jar org.wc.WordCount s3://wordcountexe/data/mammals.txt s3://wordcountexe/out_01
+20/01/28 21:09:12 INFO client.RMProxy: Connecting to ResourceManager at ip-172-31-26-253.us-east-2.compute.internal/172.31.26.253:8032
+20/01/28 21:09:14 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+20/01/28 21:09:15 INFO input.FileInputFormat: Total input files to process : 1
+20/01/28 21:09:15 INFO lzo.GPLNativeCodeLoader: Loaded native gpl library
+20/01/28 21:09:15 INFO lzo.LzoCodec: Successfully loaded & initialized native-lzo library [hadoop-lzo rev a3b61461af0d6b4d981c915b0a1f342464987aaa]
+20/01/28 21:09:15 INFO mapreduce.JobSubmitter: number of splits:1
+20/01/28 21:09:15 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1580242876395_0001
+20/01/28 21:09:16 INFO impl.YarnClientImpl: Submitted application application_1580242876395_0001
+20/01/28 21:09:16 INFO mapreduce.Job: The url to track the job: http://ip-172-31-26-253.us-east-2.compute.internal:20888/proxy/application_1580242876395_0001/
+20/01/28 21:09:16 INFO mapreduce.Job: Running job: job_1580242876395_0001
+20/01/28 21:09:27 INFO mapreduce.Job: Job job_1580242876395_0001 running in uber mode : false
+20/01/28 21:09:27 INFO mapreduce.Job:  map 0% reduce 0%
+20/01/28 21:09:37 INFO mapreduce.Job:  map 100% reduce 0%
+20/01/28 21:09:46 INFO mapreduce.Job:  map 100% reduce 33%
+20/01/28 21:09:53 INFO mapreduce.Job:  map 100% reduce 100%
+20/01/28 21:09:55 INFO mapreduce.Job: Job job_1580242876395_0001 completed successfully
+20/01/28 21:09:55 INFO mapreduce.Job: Counters: 55
+	File System Counters
+		FILE: Number of bytes read=52045
+		FILE: Number of bytes written=784629
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=99
+		HDFS: Number of bytes written=0
+		HDFS: Number of read operations=1
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=0
+		S3: Number of bytes read=204469
+		S3: Number of bytes written=59550
+		S3: Number of read operations=0
+		S3: Number of large read operations=0
+		S3: Number of write operations=0
+	Job Counters 
+		Killed reduce tasks=1
+		Launched map tasks=1
+		Launched reduce tasks=3
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=348096
+		Total time spent by all reduces in occupied slots (ms)=3302784
+		Total time spent by all map tasks (ms)=7252
+		Total time spent by all reduce tasks (ms)=34404
+		Total vcore-milliseconds taken by all map tasks=7252
+		Total vcore-milliseconds taken by all reduce tasks=34404
+		Total megabyte-milliseconds taken by all map tasks=11139072
+		Total megabyte-milliseconds taken by all reduce tasks=105689088
+	Map-Reduce Framework
+		Map input records=4300
+		Map output records=30469
+		Map output bytes=312006
+		Map output materialized bytes=52033
+		Input split bytes=99
+		Combine input records=30469
+		Combine output records=5768
+		Reduce input groups=5768
+		Reduce shuffle bytes=52033
+		Reduce input records=5768
+		Reduce output records=5768
+		Spilled Records=11536
+		Shuffled Maps =3
+		Failed Shuffles=0
+		Merged Map outputs=3
+		GC time elapsed (ms)=1368
+		CPU time spent (ms)=10660
+		Physical memory (bytes) snapshot=1800519680
+		Virtual memory (bytes) snapshot=17257291776
+		Total committed heap usage (bytes)=1639972864
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=204469
+	File Output Format Counters 
+		Bytes Written=59550
+[hadoop@ip-172-31-26-253 ~]$ hadoop fs -ls /user/hadoop
+Found 1 items
+-rw-r--r--   1 hadoop hadoop   32689391 2020-01-28 21:08 /user/hadoop/MRWordCount.jar
+[hadoop@ip-172-31-26-253 ~]$ aws s3 cp s3://wordcountexe/out_01 /home/hadoop
+fatal error: An error occurred (404) when calling the HeadObject operation: Key "out_01" does not exist
+[hadoop@ip-172-31-26-253 ~]$ aws s3 cp -r s3://wordcountexe/out_01 /home/hadoop
+
+Unknown options: -r
+[hadoop@ip-172-31-26-253 ~]$ aws s3 cp s3://wordcountexe/out_01 /home/hadoop --recursive
+download: s3://wordcountexe/out_01/_SUCCESS to ./_SUCCESS
+download: s3://wordcountexe/out_01/part-r-00000 to ./part-r-00000 
+download: s3://wordcountexe/out_01/part-r-00001 to ./part-r-00001 
+download: s3://wordcountexe/out_01/part-r-00002 to ./part-r-00002 
+[hadoop@ip-172-31-26-253 ~]$ hadoop fs -ls /user/hadoop
+Found 1 items
+-rw-r--r--   1 hadoop hadoop   32689391 2020-01-28 21:08 /user/hadoop/MRWordCount.jar
+[hadoop@ip-172-31-26-253 ~]$ ls /home/hadoop/
+MRWordCount.jar  part-r-00000  part-r-00001  part-r-00002  _SUCCESS
+[hadoop@ip-172-31-26-253 ~]$ mkdir /home/hadoop/out_01
+[hadoop@ip-172-31-26-253 ~]$ ls /home/hadoop/
+MRWordCount.jar  out_01  part-r-00000  part-r-00001  part-r-00002  _SUCCESS
+[hadoop@ip-172-31-26-253 ~]$ mv /home/hadoop/part-r-00000 part-r-00001 part-r-00002 _SUCCESS /home/hadoop/out_01/
+[hadoop@ip-172-31-26-253 ~]$ ls /home/hadoop/
+MRWordCount.jar  out_01
+[hadoop@ip-172-31-26-253 ~]$ ls /home/hadoop/out_01/
+part-r-00000  part-r-00001  part-r-00002  _SUCCESS
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$
+[hadoop@ip-172-31-26-253 ~]$ aws s3 cp s3://wordcountexe/wc_2/MRWordCount.jar /home/hadoop
+download: s3://wordcountexe/wc_2/MRWordCount.jar to ./MRWordCount.jar
+[hadoop@ip-172-31-26-253 ~]$ hadoop fs -put /home/hadoop/MRWordCount.jar /user/hadoop
+[hadoop@ip-172-31-26-253 ~]$ hadoop fs -ls /user/hadoop/
+Found 1 items
+-rw-r--r--   1 hadoop hadoop   32689391 2020-01-28 21:33 /user/hadoop/MRWordCount.jar
+[hadoop@ip-172-31-26-253 ~]$ hadoop jar MRWordCount.jar org.wc.WordCount s3://wordcountexe/data/mammals.txt s3://wordcountexe/out_02
+20/01/28 21:36:50 INFO client.RMProxy: Connecting to ResourceManager at ip-172-31-26-253.us-east-2.compute.internal/172.31.26.253:8032
+20/01/28 21:36:52 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+20/01/28 21:36:53 INFO input.FileInputFormat: Total input files to process : 1
+20/01/28 21:36:53 INFO lzo.GPLNativeCodeLoader: Loaded native gpl library
+20/01/28 21:36:53 INFO lzo.LzoCodec: Successfully loaded & initialized native-lzo library [hadoop-lzo rev a3b61461af0d6b4d981c915b0a1f342464987aaa]
+20/01/28 21:36:53 INFO mapreduce.JobSubmitter: number of splits:1
+20/01/28 21:36:53 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1580242876395_0002
+20/01/28 21:36:53 INFO impl.YarnClientImpl: Submitted application application_1580242876395_0002
+20/01/28 21:36:53 INFO mapreduce.Job: The url to track the job: http://ip-172-31-26-253.us-east-2.compute.internal:20888/proxy/application_1580242876395_0002/
+20/01/28 21:36:53 INFO mapreduce.Job: Running job: job_1580242876395_0002
+20/01/28 21:37:04 INFO mapreduce.Job: Job job_1580242876395_0002 running in uber mode : false
+20/01/28 21:37:04 INFO mapreduce.Job:  map 0% reduce 0%
+20/01/28 21:37:13 INFO mapreduce.Job:  map 100% reduce 0%
+20/01/28 21:37:22 INFO mapreduce.Job:  map 100% reduce 33%
+20/01/28 21:37:28 INFO mapreduce.Job:  map 100% reduce 100%
+20/01/28 21:37:30 INFO mapreduce.Job: Job job_1580242876395_0002 completed successfully
+20/01/28 21:37:30 INFO mapreduce.Job: Counters: 55
+	File System Counters
+		FILE: Number of bytes read=52045
+		FILE: Number of bytes written=784629
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=99
+		HDFS: Number of bytes written=0
+		HDFS: Number of read operations=1
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=0
+		S3: Number of bytes read=204469
+		S3: Number of bytes written=59550
+		S3: Number of read operations=0
+		S3: Number of large read operations=0
+		S3: Number of write operations=0
+	Job Counters 
+		Killed reduce tasks=1
+		Launched map tasks=1
+		Launched reduce tasks=3
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=335088
+		Total time spent by all reduces in occupied slots (ms)=2998464
+		Total time spent by all map tasks (ms)=6981
+		Total time spent by all reduce tasks (ms)=31234
+		Total vcore-milliseconds taken by all map tasks=6981
+		Total vcore-milliseconds taken by all reduce tasks=31234
+		Total megabyte-milliseconds taken by all map tasks=10722816
+		Total megabyte-milliseconds taken by all reduce tasks=95950848
+	Map-Reduce Framework
+		Map input records=4300
+		Map output records=30469
+		Map output bytes=312006
+		Map output materialized bytes=52033
+		Input split bytes=99
+		Combine input records=30469
+		Combine output records=5768
+		Reduce input groups=5768
+		Reduce shuffle bytes=52033
+		Reduce input records=5768
+		Reduce output records=5768
+		Spilled Records=11536
+		Shuffled Maps =3
+		Failed Shuffles=0
+		Merged Map outputs=3
+		GC time elapsed (ms)=1192
+		CPU time spent (ms)=10490
+		Physical memory (bytes) snapshot=1833619456
+		Virtual memory (bytes) snapshot=17236930560
+		Total committed heap usage (bytes)=1756364800
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=204469
+	File Output Format Counters 
+		Bytes Written=59550

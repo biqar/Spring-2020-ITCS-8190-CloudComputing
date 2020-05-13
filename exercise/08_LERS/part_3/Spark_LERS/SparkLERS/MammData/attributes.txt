@@ -1,0 +1,6 @@
+BIRADS
+Age
+Shape
+Margin
+Density
+Severity

@@ -1,0 +1,75 @@
+[cloudera@quickstart ~]$ ls
+CarData           Documents                   filename.txt                MRWordCount.jar  Public
+cloudera          Downloads                   kerberos                    Music            Templates
+cloudera-manager  eclipse                     lib                         outputFile.txt   Videos
+cm_api.py         enterprise-deployment.json  ListOfInputActionRules.txt  parcels          WordCountV1.txt
+Desktop           express-deployment.json     mammals.txt                 Pictures         workspace
+[cloudera@quickstart ~]$ hadoop fs -mkdir /user/YourUserName/CarData
+mkdir: `/user/YourUserName/CarData': No such file or directory
+[cloudera@quickstart ~]$ hadoop fs -mkdir /user/cloudera/CarData
+[cloudera@quickstart ~]$ hadoop fs -put CarData/
+attributes.txt  data.txt        parameters.txt  
+[cloudera@quickstart ~]$ hadoop fs -put CarData/data.txt /user/cloudera/CarData
+[cloudera@quickstart ~]$ hadoop fs -put CarData/attributes.txt /user/cloudera/CarData
+[cloudera@quickstart ~]$ hadoop fs -ls /user/cloudera/CarData
+Found 2 items
+-rw-r--r--   1 cloudera cloudera         53 2020-01-28 16:24 /user/cloudera/CarData/attributes.txt
+-rw-r--r--   1 cloudera cloudera      53593 2020-01-28 16:23 /user/cloudera/CarData/data.txt
+[cloudera@quickstart ~]$ hive
+
+Logging initialized using configuration in file:/etc/hive/conf.dist/hive-log4j.properties
+WARNING: Hive CLI is deprecated and migration to Beeline is recommended.
+hive> CREATE TABLE Aislam6CarData(Buying STRING,Maint STRING,Doors STRING,Persons STRING,LugBoot STRING,Safety STRING,Class String)
+    > COMMENT 'This is the Cars table'
+    > ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    > LINES TERMINATED BY '\n'
+    > STORED AS TEXTFILE
+    > LOCATION '/user/cloudera/CarData';
+OK
+Time taken: 5.247 seconds
+hive> load data inpath '/user/cloudera/CarData/data.txt' into table Aislam6CarData;
+Loading data to table default.aislam6cardata
+Table default.aislam6cardata stats: [numFiles=2, numRows=0, totalSize=53646, rawDataSize=0]
+OK
+Time taken: 2.557 seconds
+hive> INSERT OVERWRITE DIRECTORY '/user/cloudera/CarDataOutput'
+    > ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    > SELECT * FROM Aislam6CarData
+    > WHERE Aislam6CarData.Buying = 'vhigh' 
+    > AND Aislam6CarData.Doors LIKE '%more'
+    > AND Aislam6CarData.Class = 'unacc';
+Query ID = cloudera_20200128180000_7daa780c-bc5b-41e8-b7e5-fab8067cc14a
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1580250891049_0005, Tracking URL = http://quickstart.cloudera:8088/proxy/application_1580250891049_0005/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1580250891049_0005
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 0
+2020-01-28 18:01:14,384 Stage-1 map = 0%,  reduce = 0%
+2020-01-28 18:01:34,139 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 3.11 sec
+MapReduce Total cumulative CPU time: 3 seconds 110 msec
+Ended Job = job_1580250891049_0005
+Stage-3 is selected by condition resolver.
+Stage-2 is filtered out by condition resolver.
+Stage-4 is filtered out by condition resolver.
+Moving data to: hdfs://quickstart.cloudera:8020/user/cloudera/CarDataOutput/.hive-staging_hive_2020-01-28_18-00-50_410_2070793141596985847-1/-ext-10000
+Moving data to: /user/cloudera/CarDataOutput
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1   Cumulative CPU: 3.11 sec   HDFS Read: 58564 HDFS Write: 3063 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 110 msec
+OK
+Time taken: 46.353 seconds
+hive> exit;
+WARN: The method class org.apache.commons.logging.impl.SLF4JLogFactory#release() was invoked.
+WARN: Please see http://www.slf4j.org/codes.html#release for an explanation.
+[cloudera@quickstart ~]$ hadoop fs -ls /user/cloudera/CarDataOutput
+Found 1 items
+-rwxr-xr-x   1 cloudera cloudera       3063 2020-01-28 18:01 /user/cloudera/CarDataOutput/000000_0
+[cloudera@quickstart ~]$ hadoop fs -get /user/cloudera/CarDataOutput/000000_0 CarDataOutput.txt
+[cloudera@quickstart ~]$ ls
+CarData            Desktop                     express-deployment.json     mammals.txt      Pictures         workspace
+CarDataOutput.txt  Documents                   filename.txt                MRWordCount.jar  Public
+cloudera           Downloads                   kerberos                    Music            Templates
+cloudera-manager   eclipse                     lib                         outputFile.txt   Videos
+cm_api.py          enterprise-deployment.json  ListOfInputActionRules.txt  parcels          WordCountV1.txt
+

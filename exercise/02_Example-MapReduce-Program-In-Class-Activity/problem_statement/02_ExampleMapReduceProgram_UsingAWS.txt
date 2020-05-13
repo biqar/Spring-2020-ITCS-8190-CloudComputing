@@ -1,0 +1,123 @@
+Cloud Computing for Data Analysis
+----------------------------------
+
+Exercise 02
+Example MapReduce Program Using AWS:
+
+Programming Language : Java
+
+1. Install required Software :
+- Putty ( for Windows ) , use Terminal ( for Apple Macintosh )
+- WinSCP ( for Windows ) , CyberDuck ( for Apple Macintosh )
+
+More instructions to setup an AWS cluster: https://youtu.be/_A_xEtd2OIM
+
+
+
+2. Read from textbook :   "Hadoop the Definitive Guide"
+
+http://www.amazon.com/Hadoop-Definitive-Guide-Tom-White/dp/1491901632
+
+- Chapter 1 Meet Hadoop , 
+- Chapter 2 MapReduce , 
+- Chapter 3 The Hadoop Distributed File System , 
+- Chapter 6 Developing a MapReduce Application , 
+- Chapter 7 How MapReduce Works , 
+- Chapter 8 MapReduce Types and Formats , 
+- Chapter 9 MapReduce Features
+
+3. Read the     MapReduce Tutorial   from
+https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html
+
+Part 1
+--------
+4. Copy the 'WordCount v1.0'  program from  https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html#Example:_WordCount_v1.0       
+  and run it on a AWS-EMR cluster
+
+	(NOTE: For the input file of the WordCount program use Mammals book from: http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/03_MammalsBook_Text_34848.txt.utf8.txt)
+
+
+	4.1. Open Eclipse
+	4.2. Click on File -> New -> Other -> Maven -> Maven Project and select Next
+	4.3. Select "Create a simple project" checkbox and select Next
+	4.4. Give a GroupID(package name) as "org.wc"
+	4.5. Give ArtifactID(project name) as "MRWordCount" and select Finish
+	4.6. Open the pom.xml file inside the MRWordCount project
+	4.7. After the <version> tag, copy and paste following dependencies:
+		<dependencies>
+
+		  <dependency>
+    		    <groupId>org.apache.hadoop</groupId>
+		    <artifactId>hadoop-common</artifactId>
+		    <version>2.8.1</version>
+		  </dependency>
+
+		  <dependency>
+		    <groupId>org.apache.hadoop</groupId>
+		    <artifactId>hadoop-mapreduce-client-core</artifactId>
+		    <version>2.8.1</version>
+		  </dependency>
+
+		  <dependency>
+		    <groupId>org.apache.hadoop</groupId>
+		    <artifactId>hadoop-yarn-common</artifactId>
+		    <version>2.8.1</version>
+		  </dependency>
+
+		  <dependency>
+		    <groupId>org.apache.hadoop</groupId>
+		    <artifactId>hadoop-mapreduce-client-common</artifactId>
+		    <version>2.8.1</version>
+		  </dependency>
+
+		</dependencies>
+
+		All the above dependencies can be downloaded from: https://mvnrepository.com/artifact/org.apache.hadoop
+
+	4.8. Save the pom.xml
+	4.9. Right click on src/main/java and select New -> Package. Give the package name as org.wc(the name that we gave for GroupID) and select Finish
+	4.10. Right click on the org.wc package and select New -> Class. Give the class name as "WordCount" and select Finish
+	4.11. Go to https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html#Example:_WordCount_v1.0
+	4.12. Copy the entire WordCount v1.0 program and paste it in the project. We have to keep the first line(package org.wc) of the program.
+	4.13. Convert the project into a jar file. To do it, right click on the project, select Export -> Java -> JAR file and click Next button. Give the export destination (My suggestion is to keep the .jar file in cloudera folder - Since this is the home directory, we can run directly from it without any directory changes). The .jar file will be 'untitled', we can change it to some other name. Click 'Finish' button
+	4.14. Check if the .jar file is available in a desired folder
+	4.15. Upload the .jar to the AWS S3. Copy the .jar file from S3 instance to the name node using : aws s3 cp s3://<BUCKET_NAME>/<JAR_FILE_NAME > /home/hadoop
+        4.16. Upload to HDFS using the command: hadoop fs -put <JAR_FILE_NAME> /user/hadoop/
+                1. To check the file is transfered correctly use the following command: hadoop fs -ls /user/hadoop/
+	4.17. Get Mammals book from the above mentioned link and save it as 'mammals.txt' and upload it to an AWS S3.
+	4.18. Execute the program with the command: hadoop jar JAR_FILE_NAME.jar WordCount FILE_INPUT_LOCATION OUTPUT_PATH
+	(NOTE:
+		1. In the above command, WordCount is a main class name
+		2. For running the same command second time, we have to delete the old output folder or give another name for the new output folder. Hadoop cannot replace the old output folder
+		3. To remove a folder from the cluster, use the command: hadoop fs -rm -r /user/FOLDER_PATH/FOLDER_NAME
+	)
+	4.19. Once the execution is complete, check if the output files are created using: hadoop fs -ls /user/FOLDER_PATH/FOLDER_NAME
+	4.20. Download the output file from S3 instance and upload to Canvas
+
+Part 2
+-------
+
+5. Copy the 'WordCount v2.0' and run it on the AWS Cluster. 
+	
+	(NOTE: For an input file of the WordCount program, use Mammals book from: http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/03_MammalsBook_Text_34848.txt.utf8.txt)
+
+	5.1. Follow the steps 4.1 to 4.21. Use https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html#Example:_WordCount_v2.0
+
+	5.2. Open PuTTy or Terminal.
+
+	5.3. Get the mammals book from the above mentioned link and rename it as 'mammals.txt'. Upload the 'mammals.txt' file toS3
+
+	5.3. Run the  " WordCount v2.0 "  in a clustered environment . ( this program will *not* run on the Laptop , as it needs to use multiple machines ).
+
+	5.4. Execute and save the output into a output text file using the steps that we followed from 4.11-4.14
+	
+	5.5. Get the output file from HDFS and upload the .jar file and output text file to Canvas 
+
+6. Copy all commands from the Command Line Window or Terminal into a .txt file including your login and username until the last command and submit to Canvas
+
+7. Each student should upload this part individually
+
+--------------------------
+
+8. Delete/Terminate the AWS cluster and delete all files from S3 when finished, otherwise Amazon will charge your Credit Card
+

@@ -1,0 +1,13 @@
+Confusion matrix:
+142.0  0.0  
+64.0   0.0 
+Test accuracy = 0.6893203883495146
+Precision(2.0) = 0.6893203883495146
+Precision(4.0) = 0.0
+Recall(2.0) = 1.0
+Recall(4.0) = 0.0
+FPR(2.0) = 1.0
+FPR(4.0) = 0.0
+F1-Score(2.0) = 0.8160919540229885
+F1-Score(4.0) = 0.0
+Total Runtime in Seconds: 1569.96098582920/04/16 21:01:03 INFO SparkContext: Invoking stop() from shutdown hook

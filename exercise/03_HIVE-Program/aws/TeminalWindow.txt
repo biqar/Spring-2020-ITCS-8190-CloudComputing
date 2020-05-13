@@ -1,0 +1,70 @@
+CCI1KQFVH6ALT:Downloads aislam6$ ssh -i ClassKeyPair.pem hadoop@ec2-18-222-206-233.us-east-2.compute.amazonaws.com
+The authenticity of host 'ec2-18-222-206-233.us-east-2.compute.amazonaws.com (18.222.206.233)' can't be established.
+ECDSA key fingerprint is SHA256:QqvkjEHzVb/77V8kjp3/9tVc2b2bV20MIcEKLaNrLNc.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'ec2-18-222-206-233.us-east-2.compute.amazonaws.com,18.222.206.233' (ECDSA) to the list of known hosts.
+Last login: Wed Jan 29 01:37:04 2020
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/
+3 package(s) needed for security, out of 15 available
+Run "sudo yum update" to apply all updates.
+                                                                    
+EEEEEEEEEEEEEEEEEEEE MMMMMMMM           MMMMMMMM RRRRRRRRRRRRRRR    
+E::::::::::::::::::E M:::::::M         M:::::::M R::::::::::::::R   
+EE:::::EEEEEEEEE:::E M::::::::M       M::::::::M R:::::RRRRRR:::::R 
+  E::::E       EEEEE M:::::::::M     M:::::::::M RR::::R      R::::R
+  E::::E             M::::::M:::M   M:::M::::::M   R:::R      R::::R
+  E:::::EEEEEEEEEE   M:::::M M:::M M:::M M:::::M   R:::RRRRRR:::::R 
+  E::::::::::::::E   M:::::M  M:::M:::M  M:::::M   R:::::::::::RR   
+  E:::::EEEEEEEEEE   M:::::M   M:::::M   M:::::M   R:::RRRRRR::::R  
+  E::::E             M:::::M    M:::M    M:::::M   R:::R      R::::R
+  E::::E       EEEEE M:::::M     MMM     M:::::M   R:::R      R::::R
+EE:::::EEEEEEEE::::E M:::::M             M:::::M   R:::R      R::::R
+E::::::::::::::::::E M:::::M             M:::::M RR::::R      R::::R
+EEEEEEEEEEEEEEEEEEEE MMMMMMM             MMMMMMM RRRRRRR      RRRRRR
+                                                                    
+[hadoop@ip-172-31-17-206 ~]$ hive
+
+Logging initialized using configuration in file:/etc/hive/conf.dist/hive-log4j2.properties Async: false
+hive> CREATE TABLE Aislam6CarData(Buying STRING,Maint STRING,Doors STRING,Persons STRING,LugBoot STRING,Safety STRING,Class String)
+    > COMMENT 'This is the Cars table'
+    > ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    > LINES TERMINATED BY '\n'
+    > STORED AS TEXTFILE;
+OK
+Time taken: 1.371 seconds
+hive> load data inpath 's3://hiveexercise/data/data.txt' overwrite into table Aislam6CarData;
+Loading data to table default.aislam6cardata
+OK
+Time taken: 6.4 seconds
+hive> INSERT OVERWRITE LOCAL DIRECTORY './CarDataHiveOutput'
+    > ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    > SELECT * FROM Aislam6CarData
+    > WHERE Aislam6CarData.Buying = 'vhigh'
+    > AND Aislam6CarData.Doors LIKE '%more'
+    > AND Aislam6CarData.Class = 'unacc';
+Query ID = hadoop_20200129014805_90f2afa4-10f1-4f56-a019-5f9ec31a9ef9
+Total jobs = 1
+Launching Job 1 out of 1
+Tez session was closed. Reopening...
+Session re-established.
+Status: Running (Executing on YARN cluster with App id application_1580260268245_0002)
+
+----------------------------------------------------------------------------------------------
+        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+----------------------------------------------------------------------------------------------
+Map 1 .......... container     SUCCEEDED      1          1        0        0       0       0  
+----------------------------------------------------------------------------------------------
+VERTICES: 01/01  [==========================>>] 100%  ELAPSED TIME: 6.78 s     
+----------------------------------------------------------------------------------------------
+Moving data to local directory CarDataHiveOutput
+OK
+Time taken: 18.967 seconds
+hive> exit;
+[hadoop@ip-172-31-17-206 ~]$ aws s3 cp ./CarDataHiveOutput/000000_0 s3://hiveexercise/CarDataHiveOutput.txt
+upload: CarDataHiveOutput/000000_0 to s3://hiveexercise/CarDataHiveOutput.txt
+[hadoop@ip-172-31-17-206 ~]$ 
