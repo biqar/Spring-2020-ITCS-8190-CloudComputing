@@ -1,0 +1,33 @@
+Cloud Computing for Data Analysis
+---------------------------------
+
+GroupActivity 01 - RSES
+-----------------------
+
+1. Download the RSES (Rough Set Exploration System) data mining software from http://logic.mimuw.edu.pl/~rses/scripts/done.html
+
+
+2. Open the database in RSES
+		a. From the menu choose  Insert | Insert Table
+		b. Right click on the table and select Load
+		c. Choose a database in the domain you like. 
+
+		Example: 
+			Healtcare (medical) domain - diabetes or heart disease database;
+
+3. Calculate Rules (view menu options and determine how to calculate the rules)
+
+4. Classify the records (view menu options and determine how to classify the records)
+
+(Example: Class is  either 1 (disease) or 0 (no disease)) | which patient has Diabetes (or heart disease) and which doesn't based on the data (Step1 Train the System).  After the training step is complete the system 'has learned' and can be used to classify future patiens, for whom class is not known (dr. does not know whether patient has diabetes/heart disease or not). We can also test the system, with data it hasn't seen, to check its accuracy (Step2 Test the System).
+
+5. Save project File | Save As
+
+6. Take a snapshot of the screen showing your project data, rules, classifier, and classification results | Print and bring to class . 
+- OR-  use laptop to show TA your project file .
+
+
+additional info:
+RSES manual (RSES 2.2 User's Guide) can be downloaded at  http://logic.mimuw.edu.pl/~rses/docs.html
+
+

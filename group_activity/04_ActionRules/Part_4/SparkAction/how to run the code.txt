@@ -1,0 +1,3 @@
+Run Spark Code using the following command:
+
+spark-submit --class "org.ActionRules.Main" --master yarn --deploy-mode client LOCATION_OF_JAR_FILE LOCATION_OF_attributes.txt LOCATION_OF_parameters.txt LOCATION_OF_DATA_FILE LOCATION_FOR_OUTPUT

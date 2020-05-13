@@ -1,0 +1,33 @@
+Cloud Computing for Data Analysis
+
+Group Activity 04 - PART2: Download MapReduce Action Rules software and run on AWS EMR Hadoop cluster
+
+Get Car Evaluation Data from: http://webpages.uncc.edu/aatzache/ITCS6162/Project/Data/CarEvaluationData/CarData.zip
+Get Mammographic Mass Data from: http://webpages.uncc.edu/aatzache/ITCS6162/Project/Data/MammographicMassData/MammData.zip
+
+Replicate both data 1024 times. Templates of all data files are given in the 'Data' folder in the .zip file that we download from the below link. Execute the code for both datasets.
+
+Download source code here: http://webpages.uncc.edu/aatzache/ITCS6162/Project/StudentPrograms/MR_RandomForestExample_01.zip
+
+To run the Code:
+
+1. Create a cluster with Hadoop and Spark in AWS and start the cluster. Once the cluster is running, log-in to the master node using Putty(Windows) or SSH(MAC or Linux)
+
+2. Create a data bucket in AWS S3. Upload ActionRules.jar, data.txt, attributes.txt and parameters.txt from the Data directory to S3
+
+3. From the master node download HadoopLERS.jar using the command:
+	aws s3 cp s3://biqarrandomforest/ActionRules.jar .
+
+
+4. Run the .jar file using your terminal or Putty using following command:
+
+hadoop jar ActionRules.jar snippet.Main s3://biqarrandomforest/cardata/attributes.txt s3://biqarrandomforest/cardata/data.txt s3://biqarrandomforest/cardata/parameters.txt s3://biqarrandomforest/cardata/HadoopActionRulesOutput 1 10
+
+hadoop jar ActionRules.jar snippet.Main s3://biqarrandomforest/mammdata/attributes.txt s3://biqarrandomforest/mammdata/data.txt s3://biqarrandomforest/mammdata/parameters.txt s3://biqarrandomforest/mammdata/HadoopActionRulesOutput 1 10
+
+
+5. Download the output folder(HadoopActionRulesOutput) from S3 to your local machine
+
+6. Upload HadoopActionRulesOutput along with text from the terminal window to Canvas
+
+7. Delete/Terminate the AWS cluster and delete all files from S3 when finished, otherwise Amazon will charge your Credit Card

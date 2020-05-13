@@ -1,0 +1,4 @@
+Shape	Age
+Severity
+1	0
+500	60

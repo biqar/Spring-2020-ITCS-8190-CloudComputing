@@ -1,0 +1,68 @@
+Cloud Computing for Data Analysis
+----------------------------------
+
+Group Activity 07 - Spark GraphX
+---------------------------------
+
+Creating Scala-Spark project and adding dependencies in Scala-IDE
+
+	1.1. Open Scala-IDE
+	1.2. Create New Maven project
+	1.3. Right click on the project, click Configure and click "add Scala Nature" 
+	1.4. Add the following dependencies in pom.xml.
+		<dependencies>
+  			<dependency>
+  				<groupId>org.apache.spark</groupId>
+  				<artifactId>spark-core_2.11</artifactId>
+  				<version>2.1.2</version>
+  			</dependency>
+  			<dependency>
+  				<groupId>org.apache.spark</groupId>
+  				<artifactId>spark-graphx_2.11</artifactId>
+  				<version>2.1.2</version>
+  			</dependency>
+  		</dependencies>
+	1.5. Right click on the project and click "Properties"
+
+
+Part-1:
+1. Download GraphXBasics.scala from http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/SparkGraphX/GraphXBasics.scala
+	Copy this file into your project
+	//This code executes a simple GraphX operations
+
+2. Click RunAs and select Maven Clean  
+
+3. Click RunAs and select Maven Install. This creates a .jar file inside 'target' folder in your project
+
+4. Run this .jar file in the cluster or in Eclipse
+
+NOTE: We have to give an output path as an argument value
+NOTE: We need to specify your hadoop home directory in the program, if you are running the code in Eclipse
+
+5. To run in a cluster, use: spark2-submit --master yarn --class "ClassName" INPUT_PATH_TO_JAR_FILE OUTPUT_PATH
+
+6. We will get Multiple Output files. Upload all output files in Canvas.
+
+
+Part-2
+1. Create a new Maven project and do necessary configurations as told before
+
+2. Download GraphXShortestPath.scala from http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/SparkGraphX/GraphXShortestPath.scala
+	Copy this file into your project.
+	//This code executes Dijkstra's Shortest path algorithm for a given dataset
+
+2. Download 'animal_terms.txt' from http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/SparkGraphX/animal_terms.txt
+	//This file contain graph vertices(animal names)
+
+3. Download 'animal_distances.txt' from http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/SparkGraphX/animal_distances.txt
+	//This file contain graph edges in the format of: (animalVertex1,animalVertex2,edge_weight) 
+
+NOTE: We need to specify your hadoop home directory in the program, if you are running the code in Eclipse
+NOTE: We should specify 3 argument values: 1: file path of animal_terms.txt , 2: file path of animal_distances.txt , 3: output path
+
+4. Get a .jar file as mentioned in Part-1
+
+5. To run the jar file in cluster, use:  
+	spark2-submit --master yarn --deploy-mode client --driver-memory 16G --executor-memory 16G --class "ClassName" INPUT_PATH_TO_JAR_FILE INPUT_PATH_TO_VERTICES_FILE INPUT_PATH_TO_EDGES_FILE OUTPUT_PATH
+
+6. Submit the output file in Canvas

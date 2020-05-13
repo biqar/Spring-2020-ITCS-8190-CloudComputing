@@ -1,0 +1,5 @@
+(Margin,Margin4->Margin1)^(Density,Density3->Density3) ==> (Severity,Severity1->Severity0)	[Support:- 163 ; Confidence:- 62%]
+(Margin,Margin4->Margin4) ==> (Severity,Severity1->Severity1)	[Support:- 177 ; Confidence:- 48%]
+(Margin,Margin5->Margin1) ==> (Severity,Severity1->Severity0)	[Support:- 106 ; Confidence:- 73%]
+(Margin,Margin5->Margin4) ==> (Severity,Severity1->Severity1)	[Support:- 106 ; Confidence:- 58%]
+(Margin,Margin5->Margin5) ==> (Severity,Severity1->Severity1)	[Support:- 106 ; Confidence:- 69%]

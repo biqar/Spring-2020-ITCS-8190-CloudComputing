@@ -1,0 +1,28 @@
+Cloud Computing for Data Analysis
+
+Group Activity 04 - PART4: Download Spark Action Rules software and run on DSBA-Hadoop cluster
+
+Get Car Evaluation Data from: http://webpages.uncc.edu/aatzache/ITCS6162/Project/Data/CarEvaluationData/CarData.zip
+Get Mammographic Mass Data from: http://webpages.uncc.edu/aatzache/ITCS6162/Project/Data/MammographicMassData/MammData.zip
+
+Replicate both data 1024 times. Templates of all data files are given in the 'Data' folder in the .zip file that we download from the below link. Execute the code for both datasets.
+
+Download source code here: http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/SparkAction.zip
+
+To run the Code:
+
+1. Copy the attached SparkAction-0.0.1-SNAPSHOT.jar file to your WinSCP or CyberDuck
+2. Template of attributes and parameters file to be given to the code are given in attributes.txt and parameters.txt respectively
+3. Create attributes.txt, parameters.txt in the given template for the respective dataset and copy to DSBA-HDFS using:
+	hadoop fs -put /users/YOURUNCC_USERNAME/file_name.txt /user/YOURUNCC_USERNAME/
+
+
+4. Run the .jar file using your terminal or Putty using following command:
+
+	spark2-submit --class org.ActionRules.Main --master yarn --deploy-mode client LOCATION_OF_JAR_FILE LOCATION_OF_attributes.txt LOCATION_OF_parameters.txt LOCATION_OF_DATA_FILE LOCATION_FOR_OUTPUT
+
+5. Get the output using following command:
+	hadoop fs -get LOCATION_FOR_OUTPUT /users/abagavat/SparkOutput.txt (if the output directory contains just a single file)
+	hadoop fs -getmerge LOCATION_FOR_OUTPUT /users/abagavat/SparkOutput.txt (if the output directory contains just a multiple files)
+
+6. Upload SparkOutput.txt along with text from the terminal window to Canvas

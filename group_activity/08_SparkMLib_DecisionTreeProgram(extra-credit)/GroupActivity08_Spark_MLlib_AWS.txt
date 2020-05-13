@@ -1,0 +1,103 @@
+Cloud Computing for Data Analysis
+
+Group Activity 08 - Spark MLib program
+------------------------------
+
+Part1
+
+The following instructions are given to work with Spark in Eclipse itself. So you can program and debug in Eclipse itself.
+Please follow instructions given in Exercise04 - Spak SQL - to create a Maven project.
+
+Find Spark programming tutorials here: http://spark.apache.org/docs/latest/programming-guide.html
+
+1. Copy the following Maven dependency into pom.xml in a Maven project
+
+<dependencies>
+	<dependency>
+  		<groupId>org.apache.spark</groupId>
+  		<artifactId>spark-core_2.11</artifactId>
+  		<version>2.1.0</version>
+  	</dependency>
+	
+	<dependency>
+    		<groupId>org.apache.spark</groupId>
+    		<artifactId>spark-mllib_2.11</artifactId>
+    		<version>2.1.0</version>
+	</dependency>
+</dependencies>
+
+2. Copy the scala word count program from http://spark.apache.org/examples.html to your project. 
+(NOTE: The copied code contains only a wordcount module. You have to initialize Hadoop home directory, Spark Configuration and Spark Context)
+Review Exercise 04 to know how to initialize them
+
+
+3. Clean the project to remove any old jar files (Maven Clean) and Package the Maven project into a jar file.
+
+4. Run the jar file using the command
+	spark-submit --class "ClassName" --master yarn --deploy-mode client <File path of .jar file> <Folder path of the Output>
+   for:
+	4.1 data from http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/ActionRulesList.txt
+	4.2 data.txt from http://webpages.uncc.edu/aatzache/ITCS6162/Project/Data/MammographicMassData/MammData.zip	
+
+5. Save results in output text file ( created in <Folder path of the Output> ) , and upload both output text files to Canvas
+
+
+Part2:
+6. Install / import plug-ins packages to use the Spark MLib (Machine Learning Library) 
+
+7. Write a program to Create a Decision Tree using the CarData.txt
+
+	9.1 read Chapter11  from Book 3. Learning Spark on using the MLib . DecisionTree is on page 230 .
+
+	9.2 use the mllib.tree.DecisionTree class  |  use the  trainClassifier()  and  trainRegressor()  methods 
+
+	9.3 the training methods take the following parameters :
+
+data
+	RDD of LabeledPoint
+
+numClasses (classification only)
+	Number of classes to use
+
+impurity
+	Node impurity measure; can be   mini  or  entropy  for classification. Use  entropy .
+
+maxDepth
+	Maximum depth of tree - use default: 5
+
+maxBins
+	Number of bins to slip data into when building each node - use value: 32
+
+categoricalFeaturesInfo
+	A map specifying which features are categorical, and how many categories they each have. For example, if feature ( attribute ) 1 is a binary attribute , with labels ( values ) 0 and 1 , and  feature ( attribute ) 2 has three values - 0,1, and 2, you would pass {1: 2, 2: 3} . Use an empty map if no features are categorical .
+
+
+Part 3
+----------
+Run the following program , which builds a Decision Tree per the instructions in Part 2 above .
+
+10 . Background : Read Chapter1 and Chapter2 from Book 3. Learning Spark , and refer to the following links :
+
+http://spark.apache.org/docs/latest/mllib-guide.html
+https://www.mapr.com/blog/apache-spark-machine-learning-tutorial
+
+11. Create a new Maven Project
+12. Create a package named org.ML
+13. Copy a spark decision tree program from    http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/NewDecisionTreeProgram.zip
+14. Run the project in Eclipse and Upload outout file to Canvas  -  a file named like part-00000 
+
+15. Copy the attached .jar file from the downloaded .zip file. Copy it to  hadoop-dsba.uncc.edu    via  WinSCP or CyberDuck
+
+16. Create an EMR cluster with Spark
+
+17. Download CarData from http://webpages.uncc.edu/aatzache/ITCS6162/Project/Data/CarEvaluationData/CarData.zip and upload to  hadoop-dsba.uncc.edu. Also, upload DecisionTree.jar to S3
+
+18. Login to the master node of the cluster using putty or cyberduck
+
+19. Copy the DecisionTree.jar to the master node using the command:
+	aws s3 cp s3://raqibdecisiontree/DecisionTree.jar .
+
+20. Run the .jar file using the command:
+	spark-submit --class org.ML.DecisionTreeDriver --master yarn --deploy-mode client DecisionTree.jar s3://raqibdecisiontree/data.txt s3://raqibdecisiontree/DecisionTreeOutput
+
+21. Copy All text from the Command Window - including the output showing "TestE Error" and Decision Tree Model Classifier , and upload to Canvas along with the 'metadata' directory in the output

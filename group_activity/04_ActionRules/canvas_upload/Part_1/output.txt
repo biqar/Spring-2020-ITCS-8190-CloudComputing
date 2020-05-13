@@ -1,0 +1,120 @@
+
+Please Give a choice
+1.Enter Stable Attributes...
+2.Go next...1
+
+Attributes Available
+--------------------------------
+buying	maint	doors	persons	lugBoot	safety	class	
+Enter a Stable attribute...buying
+
+Stable Attributes [buyinglow, buyingmed, buyingvhigh, buyinghigh]
+Please Give a choice
+1.Enter Stable Attributes...
+2.Go next...2
+
+Data size 25
+Attributes Available
+--------------------------------
+maint	doors	persons	lugBoot	safety	class	
+Enter a Decision attribute...class
+
+Available Decision values
+classgood	classunacc	classvgood	classacc	
+Change Decision From...classunacc
+
+Available Decision values
+classgood	classunacc	classvgood	classacc	
+Change Decision To...classacc
+
+Enter Minimum Support...10
+
+Enter Minimum Confidence Percentage...3
+
+Action Rules
+--------------------------------
+(maint,maintvhigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(persons,personsmore->persons4)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(persons,personsmore->persons4)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->mainthigh)^(buying,buyinghigh->buyinghigh)^(safety,safetyhigh->safetyhigh)^(persons,persons4->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyinghigh->buyinghigh)^(safety,safetyhigh->safetyhigh)^(persons,persons4->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyinghigh->buyinghigh)^(safety,safetyhigh->safetyhigh)^(persons,persons4->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(persons,persons2->persons4)^(buying,buyingvhigh->buyingvhigh)^(safety,->safetyhigh)^(maint,->maintmed) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(persons,persons2->persons4)^(buying,buyinghigh->buyinghigh)^(safety,->safetyhigh)^(maint,->mainthigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(persons,persons2->persons4)^(buying,buyingvhigh->buyingvhigh)^(safety,->safetyhigh)^(maint,->maintlow) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(persons,persons2->persons4)^(buying,buyinghigh->buyinghigh)^(safety,->safetyhigh)^(maint,->maintlow) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(persons,persons2->persons4)^(buying,buyinghigh->buyinghigh)^(safety,->safetyhigh)^(maint,->maintmed) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(buying,buyinglow->buyinglow)^(persons,persons2->persons4)^(maint,->mainthigh)^(safety,->safetymed) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(buying,buyingmed->buyingmed)^(persons,persons2->persons4)^(safety,->safetyhigh)^(maint,->mainthigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(buying,buyingmed->buyingmed)^(persons,persons2->persons4)^(safety,->safetymed)^(maint,->maintmed) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(buying,buyinglow->buyinglow)^(persons,persons2->persons4)^(maint,->maintvhigh)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(buying,buyingmed->buyingmed)^(persons,persons2->persons4)^(maint,->maintvhigh)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->mainthigh)^(buying,buyinghigh->buyinghigh)^(safety,safetymed->safetyhigh)^(persons,persons4->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyinghigh->buyinghigh)^(safety,safetymed->safetyhigh)^(persons,persons4->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyinghigh->buyinghigh)^(safety,safetymed->safetyhigh)^(persons,persons4->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(persons,persons4->persons4)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(persons,persons4->persons4)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(safety,safetyhigh->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(safety,safetyhigh->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->mainthigh)^(buying,buyinghigh->buyinghigh)^(safety,safetymed->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyinghigh->buyinghigh)^(safety,safetymed->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyinghigh->buyinghigh)^(safety,safetymed->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(safety,->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(safety,->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(safety,->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(safety,->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->mainthigh)^(buying,buyinghigh->buyinghigh)^(persons,personsmore->persons4)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyinghigh->buyinghigh)^(persons,personsmore->persons4)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyinghigh->buyinghigh)^(persons,personsmore->persons4)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(safety,safetyhigh->safetyhigh)^(persons,persons4->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(safety,safetyhigh->safetyhigh)^(persons,persons4->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(safety,safetymed->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(safety,safetymed->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->mainthigh)^(buying,buyinghigh->buyinghigh)^(safety,safetyhigh->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyinghigh->buyinghigh)^(safety,safetyhigh->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyinghigh->buyinghigh)^(safety,safetyhigh->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(safety,safetylow->safetyhigh)^(buying,buyingvhigh->buyingvhigh)^(persons,->persons4)^(maint,->maintmed) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(safety,safetylow->safetyhigh)^(buying,buyinghigh->buyinghigh)^(maint,->mainthigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(safety,safetylow->safetyhigh)^(buying,buyingvhigh->buyingvhigh)^(maint,->maintlow)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(safety,safetylow->safetyhigh)^(buying,buyinghigh->buyinghigh)^(maint,->maintlow)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(safety,safetylow->safetyhigh)^(buying,buyinghigh->buyinghigh)^(persons,->persons4)^(maint,->maintmed) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(buying,buyinglow->buyinglow)^(safety,safetylow->safetymed)^(maint,->mainthigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(safety,safetylow->safetyhigh)^(buying,buyingmed->buyingmed)^(maint,->mainthigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(buying,buyingmed->buyingmed)^(safety,safetylow->safetymed)^(maint,->maintmed)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(safety,safetylow->safetyhigh)^(buying,buyinglow->buyinglow)^(maint,->maintvhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(safety,safetylow->safetyhigh)^(buying,buyingmed->buyingmed)^(maint,->maintvhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(persons,personsmore->persons4)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(persons,personsmore->persons4)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(safety,safetyhigh->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(safety,safetyhigh->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->mainthigh)^(buying,buyinghigh->buyinghigh)^(persons,persons4->persons4)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyinghigh->buyinghigh)^(persons,persons4->persons4)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyinghigh->buyinghigh)^(persons,persons4->persons4)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(safety,safetymed->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(safety,safetymed->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(safety,safetyhigh->safetyhigh)^(buying,buyingvhigh->buyingvhigh)^(maint,mainthigh->maintmed)^(persons,personsmore->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(safety,safetyhigh->safetyhigh)^(buying,buyingvhigh->buyingvhigh)^(maint,mainthigh->maintlow)^(persons,personsmore->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(safety,safetymed->safetyhigh)^(persons,personsmore->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(safety,safetymed->safetyhigh)^(persons,personsmore->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(safety,safetymed->safetyhigh)^(persons,persons4->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(safety,safetymed->safetyhigh)^(persons,persons4->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->mainthigh)^(buying,buyinghigh->buyinghigh)^(safety,->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyinghigh->buyinghigh)^(safety,->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyinghigh->buyinghigh)^(safety,->safetyhigh)^(persons,->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(safety,safetymed->safetyhigh)^(persons,persons4->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(safety,safetymed->safetyhigh)^(persons,persons4->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(safety,safetyhigh->safetyhigh)^(persons,personsmore->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(safety,safetyhigh->safetyhigh)^(persons,personsmore->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->mainthigh)^(buying,buyinghigh->buyinghigh)^(safety,safetymed->safetyhigh)^(persons,personsmore->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyinghigh->buyinghigh)^(safety,safetymed->safetyhigh)^(persons,personsmore->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyinghigh->buyinghigh)^(safety,safetymed->safetyhigh)^(persons,personsmore->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(safety,safetyhigh->safetyhigh)^(persons,persons4->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,mainthigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(safety,safetyhigh->safetyhigh)^(persons,persons4->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->mainthigh)^(buying,buyinghigh->buyinghigh)^(safety,safetyhigh->safetyhigh)^(persons,personsmore->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyinghigh->buyinghigh)^(safety,safetyhigh->safetyhigh)^(persons,personsmore->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyinghigh->buyinghigh)^(safety,safetyhigh->safetyhigh)^(persons,personsmore->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(persons,persons4->persons4)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(persons,persons4->persons4)^(safety,->safetyhigh) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintmed)^(buying,buyingvhigh->buyingvhigh)^(safety,safetymed->safetyhigh)^(persons,personsmore->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+(maint,maintvhigh->maintlow)^(buying,buyingvhigh->buyingvhigh)^(safety,safetymed->safetyhigh)^(persons,personsmore->persons4) ==> (class,classunacc->classacc)   [Support:- 12 & New Confidence:- 100% & Old Confidence:- 100% & Utility:- 100%]
+
+Total Time :144.251

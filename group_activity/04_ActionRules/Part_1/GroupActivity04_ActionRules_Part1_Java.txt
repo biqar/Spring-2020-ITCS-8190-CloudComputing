@@ -1,0 +1,30 @@
+Cloud Computing for Data Analysis
+
+Group Activity 04 - PART1: Download Action Rules software in Java and run in Eclipse or NetBeans
+
+Download the project file from: http://webpages.uncc.edu/aatzache/ITCS6190/Exercises/ActionRulesExample.zip
+
+Use the data that comes with the .zip file. Input files: 'attributes.txt' and 'data.txt' is present in both projects.
+
+1. The .zip file is a Java project. You can import it directly in Eclipse
+2. The .zip file comes with two projects: ActionRules and LERS 
+3. Right click on ActionRules -> Build Path. Check if the LERS project is added to the project Action Rules
+4. Attribute and Data file names can be changed in StrigsDAO.java file in the LERS project. By default it is set to the given file names: 'attributes.txt' and 'data.txt' 
+5. We can change file path of attributes in line - 4 in StringsDAO.java
+6. We can change file path of data in line - 5 in StringsDAO.java
+7. Run the java code
+8. The code asks following choices:
+	1. Enter Stable Attributes
+	2. Go Next
+9. If we choose option 1,
+	- the code gives all available attributes
+	- and asks to enter an attribute from those attributes for the stable attribute
+	- enter an attribute and click Enter
+10. If we choose option 2,
+	- the code gives all available attributes
+	- and asks to enter an attribute from those attributes for the decision attribute
+	- Once you choose the decision attribute, the code asks you for decision from and decision to values from the chosen decision attribute
+	- give all attribute values and click Enter
+11. Now the code asks you minimum support and minimum confidence. (Give minimum support of atleast 1 and minimum confidence of atleast 10)
+12. The code now executes for some time and generates action rules.
+13. Copy the result to a .txt file and upload in Canvas

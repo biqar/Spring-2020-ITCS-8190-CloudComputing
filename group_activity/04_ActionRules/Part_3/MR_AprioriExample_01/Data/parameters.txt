@@ -1,0 +1,4 @@
+buying	maint	doors
+class
+unacc	acc
+500	60

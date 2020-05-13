@@ -1,0 +1,13 @@
+part_1:
+> Enter a Stable attribute...buying
+> Enter a Decision attribute...class
+> Change Decision From...classunacc
+> Change Decision To...classacc
+> Enter Minimum Support...10
+> Enter Minimum Confidence Percentage...3
+
+part_2: for both cardata and mammdata, used minimum support value: 1 and minimum confidence value 10.
+
+part_3:
+a) for cardata, used used minimum support value: 1 and minimum confidence value 10.
+b) For mammdata, used minimum support value: 100 and minimum confidence value 30.

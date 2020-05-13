@@ -1,0 +1,6 @@
+(BI-RADS,BI-RADS5->BI-RADS5) ==> (Severity,Severity1->Severity1)	[Support:- 285 ; Confidence:- 81%]
+(Density,Density3->Density3)^(BI-RADS,BI-RADS5->BI-RADS4) ==> (Severity,Severity1->Severity0)	[Support:- 266 ; Confidence:- 70%]
+(Density,Density3->Density3)^(BI-RADS,BI-RADS5->BI-RADS4)^(Margin,Margin4->Margin1) ==> (Severity,Severity1->Severity0)	[Support:- 114 ; Confidence:- 81%]
+(Margin,Margin4->Margin1) ==> (Severity,Severity1->Severity0)	[Support:- 177 ; Confidence:- 61%]
+(Margin,Margin4->Margin1)^(BI-RADS,BI-RADS5->BI-RADS4) ==> (Severity,Severity1->Severity0)	[Support:- 126 ; Confidence:- 80%]
+(Margin,Margin4->Margin5) ==> (Severity,Severity1->Severity1)	[Support:- 106 ; Confidence:- 58%]

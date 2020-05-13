@@ -1,0 +1,4 @@
+doors	persons
+class
+unacc	acc
+1	10
