@@ -1,6 +1,14 @@
 # Spring-2020-ITCS-8190-Cloud Computing for Data Analysis
 This repository contains the projects and assignments of course **"ITCS 6190/8190: Cloud Computing for Data Analysis"**. This course has been taken in Spring 2020 semester, as part of my PhD degree at UNC Charlotte.
 
+In this project we have to submit 3 type of assignments:
+* [Exercise](https://github.com/biqar/Spring-2020-ITCS-8190-CloudComputing/tree/master/exercise)
+* [Group Activity](https://github.com/biqar/Spring-2020-ITCS-8190-CloudComputing/tree/master/group_activity)
+* [Video Case](https://github.com/biqar/Spring-2020-ITCS-8190-CloudComputing/tree/master/video_case)
+
+Besides these, we also had to submit a final group project,
+* [Group Project](https://github.com/biqar/Spring-2020-ITCS-8190-CloudComputing/tree/master/group_project) + [PhD Project](https://github.com/biqar/Spring-2020-ITCS-8190-CloudComputing/tree/master/phd_project)
+
 ## Textbooks
   1. [Mining of Massive Datasets](http://infolab.stanford.edu/%7Eullman/mmds/book.pdf), 2nd Edition, by Jure Leskovec, Anand Rajaraman, and Jeff Ullman, Cambridge University Press, 2014, ISBN: 9781107077232
   2. [Hadoop: The Definitive Guide](http://shop.oreilly.com/product/0636920033448.do), 4th Edition, by Tom White, O’Reilly Media, 2015, ISBN: 9781491901632
